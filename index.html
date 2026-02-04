@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" class="dark"> <!-- Added class="dark" for default dark mode -->
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,14 +11,32 @@
     </style>
     <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-slate-900 text-slate-200 font-sans antialiased">
-    <div class="flex h-screen">
+<body class="bg-slate-900 text-slate-200 font-sans antialiased dark:bg-slate-900 dark:text-slate-200 light:bg-gray-100 light:text-gray-900">
+    <!-- Main Header -->
+    <header class="bg-slate-800/50 backdrop-blur-sm h-16 flex items-center px-6 justify-between border-b border-slate-700 fixed top-0 left-0 right-0 z-20 dark:bg-slate-800/50 dark:border-slate-700 light:bg-white/70 light:border-gray-200">
+        <h1 class="text-lg font-semibold text-white dark:text-white light:text-gray-900">AI Investment Masters Library</h1>
+        <nav class="flex items-center gap-6 text-sm font-medium text-slate-400 dark:text-slate-400 light:text-gray-600">
+            <a href="#" class="hover:text-white transition-colors dark:hover:text-white light:hover:text-gray-900">About</a>
+            <a href="#" class="hover:text-white transition-colors dark:hover:text-white light:hover:text-gray-900">Contact</a>
+            <a href="#" class="hover:text-white transition-colors dark:hover:text-white light:hover:text-gray-900">Settings</a>
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-slate-700 transition-colors dark:hover:bg-slate-700 light:hover:bg-gray-200">
+                <svg id="moon-icon" class="w-5 h-5 text-slate-400 dark:hidden light:block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                </svg>
+                <svg id="sun-icon" class="w-5 h-5 text-yellow-400 hidden dark:block light:hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4.303 3.707a1 1 0 010 1.414l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zm-10.606 0a1 1 0 011.414 0l.707.707a1 1 0 11-1.414 1.414l-.707-.707a1 1 0 010-1.414zM18 10a1 1 0 01-1 1h-1a1 1 0 110-2h1a1 1 0 011 1zm-3.293 4.293a1 1 0 01-1.414 0l-.707-.707a1 1 0 111.414-1.414l.707.707a1 1 0 010 1.414zM6 10a1 1 0 01-1 1H4a1 1 0 110-2h1a1 1 0 011 1zm-3.293 4.293a1 1 0 01-1.414-1.414l.707-.707a1 1 0 111.414 1.414l-.707.707zM10 15a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1z" clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+            </nav>
+        </header>
+
+    <div class="flex flex-1 pt-16 h-screen"> <!-- Added pt-16 for header offset -->
         <!-- Sidebar (Library) -->
-        <aside id="sidebar" class="w-1/5 min-w-[280px] bg-slate-800 p-4 flex flex-col shadow-2xl relative z-10">
-            <h2 class="text-xl font-bold text-white mb-6 px-3">My Masters</h2>
+        <aside id="sidebar" class="w-1/5 min-w-[280px] bg-slate-800 p-4 flex flex-col shadow-2xl relative z-10 dark:bg-slate-800 light:bg-gray-50">
+            <h2 class="text-xl font-bold text-white mb-6 px-3 dark:text-white light:text-gray-900">My Masters</h2>
             <nav id="master-books" class="flex-1 overflow-y-auto custom-scrollbar">
                 <!-- O'Neil's Style Book -->
-                <div id="oneils-book" class="master-book flex items-center p-3 my-2 rounded-lg cursor-pointer transition-all duration-200 group bg-blue-600 shadow-lg active">
+                <div id="oneils-book" class="master-book flex items-center p-3 my-2 rounded-lg cursor-pointer transition-all duration-200 group bg-blue-600 shadow-lg active dark:bg-blue-600 light:bg-blue-500">
                     <svg class="w-6 h-6 text-white transition-transform duration-200 group-hover:scale-110" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
                         <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h.01a1 1 100-2H10zm3 0a1 1 0 000 2h.01a1 1 0 100-2H13zm-3 4a1 1 0 000 2h.01a1 1 0 100-2H10zm3 0a1 1 0 000 2h.01a1 1 0 100-2H13z" clip-rule="evenodd"></path>
@@ -26,19 +44,19 @@
                     <span class="ml-4 font-bold text-white">O'Neil's Style</span>
                 </div>
                 <!-- Placeholder for other masters -->
-                <div class="master-book flex items-center p-3 my-2 rounded-lg cursor-not-allowed transition-all duration-200 group opacity-50 hover:bg-slate-700">
-                    <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <div class="master-book flex items-center p-3 my-2 rounded-lg cursor-not-allowed transition-all duration-200 group opacity-50 hover:bg-slate-700 dark:hover:bg-slate-700 light:hover:bg-gray-200">
+                    <svg class="w-6 h-6 text-blue-400 dark:text-blue-400 light:text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
                         <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h.01a1 1 100-2H10zm3 0a1 1 0 000 2h.01a1 1 0 100-2H13zm-3 4a1 1 0 000 2h.01a1 1 0 100-2H10zm3 0a1 1 0 000 2h.01a1 1 0 100-2H13z" clip-rule="evenodd"></path>
                     </svg>
-                    <span class="ml-4 font-bold text-slate-300">Buffett's Way (Coming Soon)</span>
+                    <span class="ml-4 font-bold text-slate-300 dark:text-slate-300 light:text-gray-700">Buffett's Way (Coming Soon)</span>
                 </div>
-                <div class="master-book flex items-center p-3 my-2 rounded-lg cursor-not-allowed transition-all duration-200 group opacity-50 hover:bg-slate-700">
-                    <svg class="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                <div class="master-book flex items-center p-3 my-2 rounded-lg cursor-not-allowed transition-all duration-200 group opacity-50 hover:bg-slate-700 dark:hover:bg-slate-700 light:hover:bg-gray-200">
+                    <svg class="w-6 h-6 text-blue-400 dark:text-blue-400 light:text-blue-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                         <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
                         <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h.01a1 1 100-2H10zm3 0a1 1 0 000 2h.01a1 1 0 100-2H13zm-3 4a1 1 0 000 2h.01a1 1 0 100-2H10zm3 0a1 1 0 000 2h.01a1 1 0 100-2H13z" clip-rule="evenodd"></path>
                     </svg>
-                    <span class="ml-4 font-bold text-slate-300">Lynch's Logic (Coming Soon)</span>
+                    <span class="ml-4 font-bold text-slate-300 dark:text-slate-300 light:text-gray-700">Lynch's Logic (Coming Soon)</span>
                 </div>
             </nav>
         </aside>
@@ -47,68 +65,68 @@
         <div class="flex-1 flex flex-col p-6 overflow-hidden">
             <!-- Header for Assistant -->
             <header class="mb-4">
-                <h1 class="text-2xl font-bold text-white">O'Neil's Style Assistant</h1>
-                <p class="text-slate-400">윌리엄 오닐의 CAN SLIM 원칙에 기반한 투자 분석</p>
+                <h1 class="text-2xl font-bold text-white dark:text-white light:text-gray-900">O'Neil's Style Assistant</h1>
+                <p class="text-slate-400 dark:text-slate-400 light:text-gray-600">윌리엄 오닐의 CAN SLIM 원칙에 기반한 투자 분석</p>
             </header>
 
             <!-- Main Analysis Section (Chart + Indicators) -->
             <section class="flex-1 flex gap-6 mb-6 min-h-0">
                 <!-- Left: Chart Analysis (60%) -->
-                <div class="w-3/5 bg-slate-800 rounded-xl shadow-lg flex flex-col p-4">
+                <div class="w-3/5 bg-slate-800 rounded-xl shadow-lg flex flex-col p-4 dark:bg-slate-800 light:bg-white">
                     <!-- Chart Controls -->
                     <div class="flex items-center mb-3 gap-2 flex-shrink-0">
                         <div class="relative flex-grow">
-                            <svg class="w-5 h-5 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
-                            <input type="text" placeholder="종목 검색 (예: AAPL)" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <svg class="w-5 h-5 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2 dark:text-slate-500 light:text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path></svg>
+                            <input type="text" placeholder="종목 검색 (예: AAPL)" class="w-full bg-slate-900 border border-slate-700 rounded-lg py-2 pl-10 pr-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-900 dark:border-slate-700 dark:text-white light:bg-gray-100 light:border-gray-300 light:text-gray-900">
                         </div>
-                        <button class="bg-slate-700 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded-lg transition">일봉</button>
-                        <button class="bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow transition">주봉</button>
+                        <button class="bg-slate-700 hover:bg-slate-600 text-white font-semibold py-2 px-4 rounded-lg transition dark:bg-slate-700 dark:hover:bg-slate-600 light:bg-gray-200 light:hover:bg-gray-300 light:text-gray-900">일봉</button>
+                        <button class="bg-blue-600 hover:bg-blue-500 text-white font-semibold py-2 px-4 rounded-lg shadow transition dark:bg-blue-600 dark:hover:bg-blue-500 light:bg-blue-500 light:hover:bg-blue-600 light:text-white">주봉</button>
                     </div>
                     <!-- Chart Placeholder -->
-                    <div class="flex-1 chart-area rounded-md flex items-center justify-center min-h-0">
-                        <p class="text-slate-600 text-lg">Chart will be displayed here.</p>
+                    <div class="flex-1 chart-area rounded-md flex items-center justify-center min-h-0 dark:bg-black light:bg-gray-200">
+                        <p class="text-slate-600 text-lg dark:text-slate-600 light:text-gray-500">Chart will be displayed here.</p>
                     </div>
                 </div>
 
                 <!-- Right: Technical Indicator Analysis (40%) -->
-                <div class="w-2/5 bg-slate-800 rounded-xl shadow-lg flex flex-col p-4">
-                    <h3 class="text-lg font-bold text-white mb-3 flex-shrink-0">기술적 지표 분석</h3>
+                <div class="w-2/5 bg-slate-800 rounded-xl shadow-lg flex flex-col p-4 dark:bg-slate-800 light:bg-white">
+                    <h3 class="text-lg font-bold text-white mb-3 flex-shrink-0 dark:text-white light:text-gray-900">기술적 지표 분석</h3>
                     <div class="flex-1 overflow-y-auto custom-scrollbar pr-2">
                         <!-- Indicator Card -->
-                        <div class="border-b border-slate-700 py-3">
+                        <div class="border-b border-slate-700 py-3 dark:border-slate-700 light:border-gray-200">
                             <div class="flex justify-between items-center">
-                                <span class="font-bold text-sm text-slate-300">RSI (14)</span>
-                                <span class="font-mono text-sm bg-slate-900 px-2 py-1 rounded">65.2</span>
+                                <span class="font-bold text-sm text-slate-300 dark:text-slate-300 light:text-gray-700">RSI (14)</span>
+                                <span class="font-mono text-sm bg-slate-900 px-2 py-1 rounded dark:bg-slate-900 light:bg-gray-100 dark:text-white light:text-gray-900">65.2</span>
                             </div>
-                            <p class="text-xs text-slate-400 mt-1">과매수 구간에 근접하고 있으나, 아직 상승 여력은 남아있습니다.</p>
+                            <p class="text-xs text-slate-400 mt-1 dark:text-slate-400 light:text-gray-600">과매수 구간에 근접하고 있으나, 아직 상승 여력은 남아있습니다.</p>
                         </div>
-                        <div class="border-b border-slate-700 py-3">
+                        <div class="border-b border-slate-700 py-3 dark:border-slate-700 light:border-gray-200">
                             <div class="flex justify-between items-center">
-                                <span class="font-bold text-sm text-slate-300">MACD (12, 26, 9)</span>
-                                <span class="font-mono text-sm bg-slate-900 px-2 py-1 rounded text-green-400">Golden Cross</span>
+                                <span class="font-bold text-sm text-slate-300 dark:text-slate-300 light:text-gray-700">MACD (12, 26, 9)</span>
+                                <span class="font-mono text-sm bg-slate-900 px-2 py-1 rounded text-green-400 dark:bg-slate-900 dark:text-green-400 light:bg-gray-100 light:text-green-600">Golden Cross</span>
                             </div>
-                            <p class="text-xs text-slate-400 mt-1">MACD선이 시그널선을 상향 돌파하여 단기 상승 추세 전환 가능성이 높습니다.</p>
+                            <p class="text-xs text-slate-400 mt-1 dark:text-slate-400 light:text-gray-600">MACD선이 시그널선을 상향 돌파하여 단기 상승 추세 전환 가능성이 높습니다.</p>
                         </div>
-                        <div class="border-b border-slate-700 py-3">
+                        <div class="border-b border-slate-700 py-3 dark:border-slate-700 light:border-gray-200">
                             <div class="flex justify-between items-center">
-                                <span class="font-bold text-sm text-slate-300">Moving Average (50/200)</span>
-                                <span class="font-mono text-sm bg-slate-900 px-2 py-1 rounded text-green-400">Bullish</span>
+                                <span class="font-bold text-sm text-slate-300 dark:text-slate-300 light:text-gray-700">Moving Average (50/200)</span>
+                                <span class="font-mono text-sm bg-slate-900 px-2 py-1 rounded text-green-400 dark:bg-slate-900 dark:text-green-400 light:bg-gray-100 light:text-green-600">Bullish</span>
                             </div>
-                            <p class="text-xs text-slate-400 mt-1">50일 이동평균선이 200일 이동평균선 위에 위치하는 정배열 상태입니다.</p>
+                            <p class="text-xs text-slate-400 mt-1 dark:text-slate-400 light:text-gray-600">50일 이동평균선이 200일 이동평균선 위에 위치하는 정배열 상태입니다.</p>
                         </div>
-                        <div class="border-b border-slate-700 py-3">
+                        <div class="border-b border-slate-700 py-3 dark:border-slate-700 light:border-gray-200">
                             <div class="flex justify-between items-center">
-                                <span class="font-bold text-sm text-slate-300">Volume</span>
-                                <span class="font-mono text-sm bg-slate-900 px-2 py-1 rounded text-green-400">+35.8%</span>
+                                <span class="font-bold text-sm text-slate-300 dark:text-slate-300 light:text-gray-700">Volume</span>
+                                <span class="font-mono text-sm bg-slate-900 px-2 py-1 rounded text-green-400 dark:bg-slate-900 dark:text-green-400 light:bg-gray-100 light:text-green-600">+35.8%</span>
                             </div>
-                            <p class="text-xs text-slate-400 mt-1">최근 거래량이 평균 대비 증가하며 주가 상승에 신뢰도를 더합니다.</p>
+                            <p class="text-xs text-slate-400 mt-1 dark:text-slate-400 light:text-gray-600">최근 거래량이 평균 대비 증가하며 주가 상승에 신뢰도를 더합니다.</p>
                         </div>
-                        <div class="border-b border-slate-700 py-3">
+                        <div class="border-b border-slate-700 py-3 dark:border-slate-700 light:border-gray-200">
                             <div class="flex justify-between items-center">
-                                <span class="font-bold text-sm text-slate-300">Stochastic (14, 3, 3)</span>
-                                <span class="font-mono text-sm bg-slate-900 px-2 py-1 rounded text-red-400">78.1</span>
+                                <span class="font-bold text-sm text-slate-300 dark:text-slate-300 light:text-gray-700">Stochastic (14, 3, 3)</span>
+                                <span class="font-mono text-sm bg-slate-900 px-2 py-1 rounded text-red-400 dark:bg-slate-900 dark:text-red-400 light:bg-gray-100 light:text-red-600">78.1</span>
                             </div>
-                            <p class="text-xs text-slate-400 mt-1">과매수 구간에 위치해 있어 단기적인 조정 가능성에 유의해야 합니다.</p>
+                            <p class="text-xs text-slate-400 mt-1 dark:text-slate-400 light:text-gray-600">과매수 구간에 위치해 있어 단기적인 조정 가능성에 유의해야 합니다.</p>
                         </div>
                     </div>
                 </div>
@@ -118,69 +136,69 @@
             <section class="h-[40%] flex flex-col">
                 <!-- Tab Buttons -->
                 <div class="flex-shrink-0 flex space-x-1">
-                    <button id="chat-tab-btn" class="tab-button px-6 py-2 font-bold rounded-t-lg transition-colors bg-slate-800 text-white">채팅</button>
-                    <button id="news-tab-btn" class="tab-button px-6 py-2 font-bold rounded-t-lg transition-colors bg-transparent text-slate-400 hover:bg-slate-800/50 hover:text-white">뉴스</button>
-                    <button id="financials-tab-btn" class="tab-button px-6 py-2 font-bold rounded-t-lg transition-colors bg-transparent text-slate-400 hover:bg-slate-800/50 hover:text-white">재무</button>
+                    <button id="chat-tab-btn" class="tab-button px-6 py-2 font-bold rounded-t-lg transition-colors bg-slate-800 text-white dark:bg-slate-800 dark:text-white light:bg-white light:text-gray-900">채팅</button>
+                    <button id="news-tab-btn" class="tab-button px-6 py-2 font-bold rounded-t-lg transition-colors bg-transparent text-slate-400 hover:bg-slate-800/50 hover:text-white dark:hover:bg-slate-800/50 light:hover:bg-gray-200">뉴스</button>
+                    <button id="financials-tab-btn" class="tab-button px-6 py-2 font-bold rounded-t-lg transition-colors bg-transparent text-slate-400 hover:bg-slate-800/50 hover:text-white dark:hover:bg-slate-800/50 light:hover:bg-gray-200">재무</button>
                 </div>
 
                 <!-- Tab Content Area -->
-                <div id="tab-content" class="flex-1 bg-slate-800 rounded-b-xl rounded-tr-xl shadow-lg overflow-hidden flex flex-col">
+                <div id="tab-content" class="flex-1 bg-slate-800 rounded-b-xl rounded-tr-xl shadow-lg overflow-hidden flex flex-col dark:bg-slate-800 light:bg-white">
                     <!-- Chat Window (Default) -->
                     <div id="chat-window" class="tab-pane h-full flex flex-col p-4 active-tab-pane">
                         <div id="chat-messages" class="flex-1 space-y-4 overflow-y-auto custom-scrollbar pr-2">
                             <!-- AI Message -->
                             <div class="flex justify-start">
-                                <div class="max-w-md lg:max-w-lg p-3 rounded-2xl bg-slate-700 text-slate-200 rounded-bl-none">
+                                <div class="max-w-md lg:max-w-lg p-3 rounded-2xl bg-slate-700 text-slate-200 rounded-bl-none dark:bg-slate-700 dark:text-slate-200 light:bg-gray-200 light:text-gray-900">
                                     안녕하십니까? 윌리엄 오닐의 CAN SLIM 원칙에 따라 최고의 주식을 분석해 드립니다. 어떤 종목이 궁금하십니까?
                                 </div>
                             </div>
                             <!-- User Message -->
                             <div class="flex justify-end">
-                                <div class="max-w-md lg:max-w-lg p-3 rounded-2xl bg-blue-600 text-white rounded-br-none shadow">
+                                <div class="max-w-md lg:max-w-lg p-3 rounded-2xl bg-blue-600 text-white rounded-br-none shadow dark:bg-blue-600 light:bg-blue-500">
                                     최근 신고가를 경신한 기술주에 대해 알려줘.
                                 </div>
                             </div>
                             <!-- AI Message -->
                             <div class="flex justify-start">
-                                <div class="max-w-md lg:max-w-lg p-3 rounded-2xl bg-slate-700 text-slate-200 rounded-bl-none">
+                                <div class="max-w-md lg:max-w-lg p-3 rounded-2xl bg-slate-700 text-slate-200 rounded-bl-none dark:bg-slate-700 dark:text-slate-200 light:bg-gray-200 light:text-gray-900">
                                     좋은 질문입니다. CAN SLIM의 'N'은 새로운 제품, 새로운 경영, 새로운 신고가를 의미합니다. 현재 시장에서 신고가를 기록 중인 몇몇 기술주를 분석해볼까요? 특정 종목을 지정해주시면 더 상세한 분석이 가능합니다.
                                 </div>
                             </div>
                         </div>
                         <div class="mt-4 flex items-center gap-2 flex-shrink-0">
-                            <input type="text" id="chat-input" placeholder="O'Neil Assistant에게 메시지 보내기..." class="flex-grow bg-slate-900 border border-slate-700 rounded-lg py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500">
-                            <button id="send-btn" class="bg-blue-600 hover:bg-blue-500 text-white p-3 rounded-lg transition-colors shadow">
+                            <input type="text" id="chat-input" placeholder="O'Neil Assistant에게 메시지 보내기..." class="flex-grow bg-slate-900 border border-slate-700 rounded-lg py-2 px-4 text-white focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-slate-900 dark:border-slate-700 dark:text-white light:bg-gray-100 light:border-gray-300 light:text-gray-900">
+                            <button id="send-btn" class="bg-blue-600 hover:bg-blue-500 text-white p-3 rounded-lg transition-colors shadow dark:bg-blue-600 dark:hover:bg-blue-500 light:bg-blue-500 light:hover:bg-blue-600">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.162.409l5 1.429a1 1 0 001.169-1.409l-7-14z"></path></svg>
                             </button>
                         </div>
                     </div>
 
                     <!-- News Panel -->
-                    <div id="news-panel" class="tab-pane h-full overflow-y-auto hidden">
-                        <div class="news-item border-b border-slate-700 py-3 hover:bg-slate-700/50 px-4">
-                            <p class="text-sm font-bold text-white">테슬라, 신형 배터리 기술 공개... 주가 5% 상승</p>
-                            <div class="flex justify-between items-center text-xs text-slate-400 mt-1">
+                    <div id="news-panel" class="tab-pane h-full overflow-y-auto hidden dark:bg-slate-800 light:bg-white">
+                        <div class="news-item border-b border-slate-700 py-3 hover:bg-slate-700/50 px-4 dark:border-slate-700 dark:hover:bg-slate-700/50 light:border-gray-200 light:hover:bg-gray-100">
+                            <p class="text-sm font-bold text-white dark:text-white light:text-gray-900">테슬라, 신형 배터리 기술 공개... 주가 5% 상승</p>
+                            <div class="flex justify-between items-center text-xs text-slate-400 mt-1 dark:text-slate-400 light:text-gray-600">
                                 <span>로이터 통신</span>
                                 <span>2시간 전</span>
                             </div>
                         </div>
-                        <div class="news-item border-b border-slate-700 py-3 hover:bg-slate-700/50 px-4">
-                            <p class="text-sm font-bold text-white">연준, 금리 동결 시사... 시장 예상 부합</p>
-                            <div class="flex justify-between items-center text-xs text-slate-400 mt-1">
+                        <div class="news-item border-b border-slate-700 py-3 hover:bg-slate-700/50 px-4 dark:border-slate-700 dark:hover:bg-slate-700/50 light:border-gray-200 light:hover:bg-gray-100">
+                            <p class="text-sm font-bold text-white dark:text-white light:text-gray-900">연준, 금리 동결 시사... 시장 예상 부합</p>
+                            <div class="flex justify-between items-center text-xs text-slate-400 mt-1 dark:text-slate-400 light:text-gray-600">
                                 <span>블룸버그</span>
                                 <span>5시간 전</span>
                             </div>
                         </div>
-                        <div class="news-item border-b border-slate-700 py-3 hover:bg-slate-700/50 px-4">
-                            <p class="text-sm font-bold text-white">애플, AI 반도체 자체 개발 발표... 주가 급등</p>
-                            <div class="flex justify-between items-center text-xs text-slate-400 mt-1">
+                        <div class="news-item border-b border-slate-700 py-3 hover:bg-slate-700/50 px-4 dark:border-slate-700 dark:hover:bg-slate-700/50 light:border-gray-200 light:hover:bg-gray-100">
+                            <p class="text-sm font-bold text-white dark:text-white light:text-gray-900">애플, AI 반도체 자체 개발 발표... 주가 급등</p>
+                            <div class="flex justify-between items-center text-xs text-slate-400 mt-1 dark:text-slate-400 light:text-gray-600">
                                 <span>월스트리트 저널</span>
                                 <span>1일 전</span>
                             </div>
                         </div>
-                        <div class="news-item border-b border-slate-700 py-3 hover:bg-slate-700/50 px-4">
-                            <p class="text-sm font-bold text-white">글로벌 공급망 병목 현상 완화 조짐... 분석가들 전망</p>
-                            <div class="flex justify-between items-center text-xs text-slate-400 mt-1">
+                        <div class="news-item border-b border-slate-700 py-3 hover:bg-slate-700/50 px-4 dark:border-slate-700 dark:hover:bg-slate-700/50 light:border-gray-200 light:hover:bg-gray-100">
+                            <p class="text-sm font-bold text-white dark:text-white light:text-gray-900">글로벌 공급망 병목 현상 완화 조짐... 분석가들 전망</p>
+                            <div class="flex justify-between items-center text-xs text-slate-400 mt-1 dark:text-slate-400 light:text-gray-600">
                                 <span>이코노미스트</span>
                                 <span>2일 전</span>
                             </div>
@@ -188,41 +206,41 @@
                     </div>
 
                     <!-- Financials Panel -->
-                    <div id="financials-panel" class="tab-pane h-full overflow-y-auto p-4 hidden">
-                        <h4 class="text-md font-bold text-white mb-2">재무 요약 (분기 기준)</h4>
+                    <div id="financials-panel" class="tab-pane h-full overflow-y-auto p-4 hidden dark:bg-slate-800 light:bg-white">
+                        <h4 class="text-md font-bold text-white mb-2 dark:text-white light:text-gray-900">재무 요약 (분기 기준)</h4>
                         <table class="w-full text-sm">
                             <thead>
-                                <tr class="text-left text-slate-400">
+                                <tr class="text-left text-slate-400 dark:text-slate-400 light:text-gray-600">
                                     <th class="py-2 px-4 font-normal">항목</th>
                                     <th class="py-2 px-4 font-normal text-right">수치</th>
                                     <th class="py-2 px-4 font-normal text-right">YoY</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr class="border-b border-slate-700">
-                                    <td class="py-3 px-4 font-semibold text-slate-300">매출액 (Revenue)</td>
-                                    <td class="py-3 px-4 text-right font-mono text-white">$119.58B</td>
-                                    <td class="py-3 px-4 text-right font-mono text-green-400">+2.08%</td>
+                                <tr class="border-b border-slate-700 dark:border-slate-700 light:border-gray-200">
+                                    <td class="py-3 px-4 font-semibold text-slate-300 dark:text-slate-300 light:text-gray-700">매출액 (Revenue)</td>
+                                    <td class="py-3 px-4 text-right font-mono text-white dark:text-white light:text-gray-900">$119.58B</td>
+                                    <td class="py-3 px-4 text-right font-mono text-green-400 dark:text-green-400 light:text-green-600">+2.08%</td>
                                 </tr>
-                                <tr class="border-b border-slate-700">
-                                    <td class="py-3 px-4 font-semibold text-slate-300">영업이익 (Operating Income)</td>
-                                    <td class="py-3 px-4 text-right font-mono text-white">$40.37B</td>
-                                    <td class="py-3 px-4 text-right font-mono text-green-400">+0.22%</td>
+                                <tr class="border-b border-slate-700 dark:border-slate-700 light:border-gray-200">
+                                    <td class="py-3 px-4 font-semibold text-slate-300 dark:text-slate-300 light:text-gray-700">영업이익 (Operating Income)</td>
+                                    <td class="py-3 px-4 text-right font-mono text-white dark:text-white light:text-gray-900">$40.37B</td>
+                                    <td class="py-3 px-4 text-right font-mono text-green-400 dark:text-green-400 light:text-green-600">+0.22%</td>
                                 </tr>
-                                <tr class="border-b border-slate-700">
-                                    <td class="py-3 px-4 font-semibold text-slate-300">순이익 (Net Income)</td>
-                                    <td class="py-3 px-4 text-right font-mono text-white">$33.92B</td>
-                                    <td class="py-3 px-4 text-right font-mono text-green-400">+13.06%</td>
+                                <tr class="border-b border-slate-700 dark:border-slate-700 light:border-gray-200">
+                                    <td class="py-3 px-4 font-semibold text-slate-300 dark:text-slate-300 light:text-gray-700">순이익 (Net Income)</td>
+                                    <td class="py-3 px-4 text-right font-mono text-white dark:text-white light:text-gray-900">$33.92B</td>
+                                    <td class="py-3 px-4 text-right font-mono text-green-400 dark:text-green-400 light:text-green-600">+13.06%</td>
                                 </tr>
-                                <tr class="border-b border-slate-700">
-                                    <td class="py-3 px-4 font-semibold text-slate-300">주당순이익 (EPS)</td>
-                                    <td class="py-3 px-4 text-right font-mono text-white">$2.18</td>
-                                    <td class="py-3 px-4 text-right font-mono text-green-400">+16.04%</td>
+                                <tr class="border-b border-slate-700 dark:border-slate-700 light:border-gray-200">
+                                    <td class="py-3 px-4 font-semibold text-slate-300 dark:text-slate-300 light:text-gray-700">주당순이익 (EPS)</td>
+                                    <td class="py-3 px-4 text-right font-mono text-white dark:text-white light:text-gray-900">$2.18</td>
+                                    <td class="py-3 px-4 text-right font-mono text-green-400 dark:text-green-400 light:text-green-600">+16.04%</td>
                                 </tr>
-                                <tr class="border-b border-slate-700">
-                                    <td class="py-3 px-4 font-semibold text-slate-300">총자산 (Total Assets)</td>
-                                    <td class="py-3 px-4 text-right font-mono text-white">$353.53B</td>
-                                    <td class="py-3 px-4 text-right font-mono text-red-400">-4.61%</td>
+                                <tr class="border-b border-slate-700 dark:border-slate-700 light:border-gray-200">
+                                    <td class="py-3 px-4 font-semibold text-slate-300 dark:text-slate-300 light:text-gray-700">총자산 (Total Assets)</td>
+                                    <td class="py-3 px-4 text-right font-mono text-white dark:text-white light:text-gray-900">$353.53B</td>
+                                    <td class="py-3 px-4 text-right font-mono text-red-400 dark:text-red-400 light:text-red-600">-4.61%</td>
                                 </tr>
                             </tbody>
                         </table>
