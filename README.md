@@ -6,11 +6,8 @@
 ## 현재 진행 상황
 
 ### 1. 기술 스택
-*   **프레임워크:** React.js
-*   **스타일링:** Tailwind CSS
-*   **빌드 도구:** Vite
-*   **아이콘:** React Icons (`react-icons`)
-*   **배포:** GitHub Pages (`gh-pages`)
+*   **프론트엔드:** 순수 HTML, CSS, JavaScript
+*   **스타일링:** Tailwind CSS (CDN 활용)
 
 ### 2. UI/UX 디자인 컨셉: "The Professional's Desk"
 *   **전체적인 분위기:** 깔끔하고 모던하며, 정보를 직관적으로 전달하는 최신 웹페이지 디자인. 다크 모드 기본 테마.
@@ -35,37 +32,30 @@
     *   **`[ 뉴스 ]` 탭:** 종목/시장 관련 최신 뉴스 기사 목록 표시 공간 (모의 UI).
     *   **`[ 재무 ]` 탭:** 종목의 주요 재무제표 요약 정보 표시 공간 (모의 UI).
 
-### 4. 코드 개선 및 배포
-*   **파일 확장자 수정:** JSX 문법을 사용하는 컴포넌트 파일들의 확장자를 `.js`에서 `.jsx`로 변경하고, 관련 import 경로를 모두 업데이트하여 빌드 오류 및 렌더링 문제를 해결했습니다.
-*   **GitHub Pages 배포 설정:**
-    *   `gh-pages` 라이브러리를 설치했습니다.
-    *   `package.json`에 GitHub Pages 호스팅을 위한 `homepage`, `predeploy`, `deploy` 스크립트를 추가했습니다.
-    *   `vite.config.js`에 GitHub Pages 서빙을 위한 `base` 경로를 설정했습니다.
-*   **GitHub Pages 배포 완료:** `npm run deploy` 명령을 통해 빌드된 프로젝트가 GitHub Pages에 성공적으로 배포되었습니다.
-
 ## 애플리케이션 실행 방법
 
-1.  프로젝트 루트 디렉토리에서 터미널을 엽니다.
-2.  다음 명령어를 실행하여 개발 서버를 시작합니다:
-    ```bash
-    npm run dev
-    ```
-3.  터미널에 표시되는 URL (일반적으로 `http://localhost:5173/`)을 웹 브라우저에서 엽니다.
+1.  프로젝트 루트 디렉토리에서 `index.html` 파일을 웹 브라우저로 직접 엽니다. (예: `file:///path/to/your/project/index.html`)
 
-## GitHub Pages 링크
-현재 배포된 페이지는 다음 링크에서 확인하실 수 있습니다:
-[https://lsmu789.github.io/oneil-s_style](https://lsmu789.github.io/oneil-s_style)
+## GitHub Pages 배포 설정 (수동 설정 필요)
 
-**참고:** `node_modules` 폴더는 일반적으로 `.gitignore`에 추가하여 버전 관리에서 제외하지만, 이번 작업에서는 모든 변경 사항을 푸시하기 위해 포함되었습니다. 실제 프로젝트에서는 `node_modules`를 Git에 커밋하지 않는 것이 일반적입니다.
+현재 프로젝트는 순수 HTML, CSS, JavaScript로 구성된 정적 웹사이트입니다. GitHub Pages를 통해 배포하려면, GitHub 저장소 설정에서 다음을 수행해야 합니다:
+
+1.  **Settings** 탭으로 이동합니다.
+2.  왼쪽 메뉴에서 **Pages**를 선택합니다.
+3.  **Source** 섹션에서 **Branch**를 `main` (또는 `master`)으로 설정하고, 폴더를 `/ (root)`로 선택합니다.
+4.  **Save** 버튼을 클릭합니다.
+5.  몇 분 후, GitHub Pages 링크 (예: `https://lsmu789.github.io/oneil-s_style`)를 통해 배포된 웹사이트를 확인할 수 있습니다.
 
 ---
 
 ## 진행 상황 기록
 
 ### 2026년 2월 4일 (수)
-*   **주요 변경 사항:** 'O'Neil's Style' AI Assistant UI를 처음부터 재구현하고 GitHub Pages 배포를 설정했습니다.
+*   **주요 변경 사항:** React/Vite 기반 프로젝트에서 순수 HTML/CSS/JS 기반 정적 웹사이트로 전환 및 구현 완료. GitHub Pages 배포 방식 변경.
 *   **상세 내용:**
-    *   React, Vite, Tailwind CSS 기반의 프로젝트 초기 설정 및 기본 컴포넌트 구조를 생성했습니다.
-    *   O'Neil's Style 어시스턴트의 UI/UX 디자인 요구사항에 따라 헤더, 사이드바, 차트 분석 창, 기술적 지표 분석 사이드바, 정보/채팅 통합 탭 등의 핵심 컴포넌트 코드를 구현했습니다.
-    *   `.js` 파일을 `.jsx`로 변경하고 import 경로를 수정하여 JSX 렌더링 문제를 해결했습니다.
-    *   `gh-pages`를 이용한 GitHub Pages 배포 환경을 설정하고 프로젝트를 배포했습니다.
+    *   기존 React/Vite 관련 파일 (컴포넌트, 설정 파일, `node_modules`, `package.json` 스크립트/의존성)을 모두 제거하고 프로젝트를 정리했습니다.
+    *   제시된 요구사항에 따라 `index.html`, `style.css`, `script.js` 3개 파일로 'O'Neil's Style' UI의 전체 구조와 기능을 구현했습니다.
+    *   HTML 내 Tailwind CSS CDN을 활용하고, `style.css`에 책장 입체감, 활성화 애니메이션, 차트 그라데이션, 커스텀 스크롤바 등 디자인 디테일을 추가했습니다.
+    *   `script.js`를 통해 탭 메뉴 전환 및 간단한 채팅 인터랙션 로직을 구현했습니다.
+    *   GitHub Pages 배포는 이제 `main` 브랜치의 루트에서 직접 서빙하는 방식으로 변경되었습니다.
+
