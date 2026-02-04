@@ -57,3 +57,15 @@
 [https://lsmu789.github.io/oneil-s_style](https://lsmu789.github.io/oneil-s_style)
 
 **참고:** `node_modules` 폴더는 일반적으로 `.gitignore`에 추가하여 버전 관리에서 제외하지만, 이번 작업에서는 모든 변경 사항을 푸시하기 위해 포함되었습니다. 실제 프로젝트에서는 `node_modules`를 Git에 커밋하지 않는 것이 일반적입니다.
+
+---
+
+## 진행 상황 기록
+
+### 2026년 2월 4일 (수)
+*   **주요 변경 사항:** 'O'Neil's Style' AI Assistant UI를 처음부터 재구현하고 GitHub Pages 배포를 설정했습니다.
+*   **상세 내용:**
+    *   React, Vite, Tailwind CSS 기반의 프로젝트 초기 설정 및 기본 컴포넌트 구조를 생성했습니다.
+    *   O'Neil's Style 어시스턴트의 UI/UX 디자인 요구사항에 따라 헤더, 사이드바, 차트 분석 창, 기술적 지표 분석 사이드바, 정보/채팅 통합 탭 등의 핵심 컴포넌트 코드를 구현했습니다.
+    *   `.js` 파일을 `.jsx`로 변경하고 import 경로를 수정하여 JSX 렌더링 문제를 해결했습니다.
+    *   `gh-pages`를 이용한 GitHub Pages 배포 환경을 설정하고 프로젝트를 배포했습니다.
