@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Header from './components/layout/Header';
-import Sidebar from './components/layout/Sidebar';
-import OneilAssistant from './components/oneil/OneilAssistant';
+import Header from './components/layout/Header.jsx';
+import Sidebar from './components/layout/Sidebar.jsx';
+import OneilAssistant from './components/oneil/OneilAssistant.jsx';
 
 function App() {
   const [selectedMaster, setSelectedMaster] = useState("O'Neil");
